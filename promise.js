@@ -1,24 +1,25 @@
-let p1 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve("Promise 1 Resolved");
-  }, 5000);
-});
+const status = false;
 
-let p2 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve("Promise 2 Resolved");
+console.log("Task 1");
+
+// promise defination
+const promise = new Promise(function (resolve, reject) {
+  setTimeout(function () {
+    if (status) {
+      resolve("Task 2");
+    } else {
+      reject("failed");
+    }
   }, 2000);
 });
 
+// promise call
+promise
+  .then(function (value) {
+    console.log(value);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 
-p1.then((result) => {
-  console.log(result);
-}).catch((e) => {
-  console.log(e);
-});
-
-p2.then((result) => {
-  console.log(result);
-}).catch((e) => {
-  console.log(e);
-});
+console.log("Task 3");
